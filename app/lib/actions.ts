@@ -1,5 +1,5 @@
 'use server';
-import { custom, z } from 'zod';
+import { custom, z } from 'zod'; //Zod is a TypeScript-first validation library
  
 import { sql } from '@vercel/postgres';
 import { revalidatePath } from 'next/cache';
