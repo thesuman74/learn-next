@@ -1,4 +1,6 @@
 import clsx from 'clsx';
+import { signIn } from 'next-auth/react';
+import Image from 'next/image'; // Import Image component
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
@@ -14,6 +16,22 @@ export function Button({ children, className, ...rest }: ButtonProps) {
       )}
     >
       {children}
+    </button>
+  );
+}
+
+export function GoogleSignInButton() {
+  const handleClick = () => {
+    signIn('google', { callbackUrl: 'http://localhost:3000/dashboard' });
+  };
+  return (
+    <button
+      onClick={handleClick}
+      className="focus:shadow-outline border-gray mt-4 flex h-14 w-full items-center justify-center rounded-lg border
+    bg-white px-6 text-xl font-semibold text-black transition-colors duration-300 hover:bg-slate-200"
+    >
+      <Image src="/google-logo.png" alt="Google Logo" width={20} height={20} />{' '}
+      <span className="ml-4"> Sign In with Google</span>
     </button>
   );
 }
